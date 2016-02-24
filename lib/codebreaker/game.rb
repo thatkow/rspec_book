@@ -10,17 +10,9 @@ module Codebreaker
 			@output.puts 'Enter guess:'
 		end
 		def guess(guess)
-			exact_match = 0
-			number_match = 0
-
-			@secret.split("").zip(guess.split("")).each do |secret_number,guess_number|
-				if secret_number == guess_number
-					exact_match += 1
-				else
-					number_match += 1 if @secret_split.include? guess_number	
-				end
-			end
-			@output.puts ( "+" * exact_match ) + ( "-" * number_match )
-		end
+			marker = Marker.new(@secret, guess)
+			@output.puts 	'+'*marker.exact_match_count + 
+							'-'*marker.number_match_count
+		end		
 	end
 end
