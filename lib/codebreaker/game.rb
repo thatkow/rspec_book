@@ -1,9 +1,12 @@
 module Codebreaker
 	class Game
+
 		def initialize(output)
 			@output = output
+			@base = 6
 		end
-		def start(secret)
+		def start(secret=nil)
+			secret = [rand(6),rand(6),rand(6),rand(6)].join("") if secret.nil? || secret.empty?
 			@secret = secret
 			@secret_split = @secret.split("")
 			@output.puts 'Welcome to Codebreaker!'
