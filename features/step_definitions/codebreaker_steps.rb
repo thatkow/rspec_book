@@ -4,6 +4,10 @@ class Output
 	end
 	def puts(message)
 		messages << message
+		@response = message
+	end	
+	def responses
+		@response
 	end
 end
 
@@ -32,5 +36,5 @@ When(/^I guess "([^"]*)"$/) do |guess|
 end
 
 Then(/^the mark should be "([^"]*)"$/) do |mark|
-  	expect(output.messages).to include(mark)
+  	expect(output.responses).to eq(mark)
 end

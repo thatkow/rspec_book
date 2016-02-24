@@ -5,8 +5,7 @@ module Codebreaker
 			@output = output
 			@base = 6
 		end
-		def start(secret=nil)
-			secret = [rand(6),rand(6),rand(6),rand(6)].join("") if secret.nil? || secret.empty?
+		def start(secret)
 			@secret = secret
 			@secret_split = @secret.split("")
 			@output.puts 'Welcome to Codebreaker!'
