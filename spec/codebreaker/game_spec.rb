@@ -12,8 +12,7 @@ module Codebreaker
 			it "prompts for the first guess" do
 				expect(output).to receive(:puts).with('Enter guess:')
 				game.start('1234')
-			end
-			
+			end						
 		end
 		describe "#guess" do
 			context "with no matches" do
@@ -24,42 +23,22 @@ module Codebreaker
 				end
 			end
 
-			context "with 1 number match" do
-				it "sends a mark with '-'" do
-					game.start('1234')
-					expect(output).to receive(:puts).with('-')
-					game.guess('2555')
-				end
-			end
 			context "with 1 exact match" do
 				it "sends a mark with '+'" do
 					game.start('1234')
 					expect(output).to receive(:puts).with('+')
 					game.guess('1555')
 				end
-			end
+			end	
 			context "with 1 number match" do
 				it "sends a mark with '-'" do
 					game.start('1234')
 					expect(output).to receive(:puts).with('-')
-					game.guess('5525')
+					game.guess('2555')
 				end
-			end
-			context "with 1 exact match" do
-				it "sends a mark with '+'" do
-					game.start('1234')
-					expect(output).to receive(:puts).with('+')
-					game.guess('5535')
-				end
-			end
+			end					
 
-			context "with 1 exact match, 1 number match" do
-				it "sends a mark with '+-'" do
-					game.start('1234')
-					expect(output).to receive(:puts).with('+-')
-					game.guess('5253')
-				end
-			end
+		
 			context "with 2 exact match" do
 				it "sends a mark with '++'" do
 					game.start('1234')
@@ -67,21 +46,8 @@ module Codebreaker
 					game.guess('5254')
 				end
 			end
-			context "with 2 number match" do
-				it "sends a mark with '--'" do
-					game.start('1234')
-					expect(output).to receive(:puts).with('--')
-					game.guess('2545')
-				end
-			end
 
-			context "with 2 exact match, 1 number match" do
-				it "sends a mark with '++-'" do
-					game.start('1234')
-					expect(output).to receive(:puts).with('++-')
-					game.guess('5233')
-				end
-			end
+			
 			context "with 3 exact match" do
 				it "sends a mark with '+++'" do
 					game.start('1234')
@@ -89,20 +55,21 @@ module Codebreaker
 					game.guess('5234')
 				end
 			end
+			context "with 2 exact match, 1 number match" do
+				it "sends a mark with '++-'" do
+					game.start('1234')
+					expect(output).to receive(:puts).with('++-')
+					game.guess('5134')
+				end
+			end
 			context "with 3 number match" do
 				it "sends a mark with '---'" do
 					game.start('1234')
 					expect(output).to receive(:puts).with('---')
-					game.guess('4325')
+					game.guess('5123')
 				end
 			end
-			context "with 1 exact match, 2 number match" do
-				it "sends a mark with '+--'" do
-					game.start('1234')
-					expect(output).to receive(:puts).with('+--')
-					game.guess('1325')
-				end
-			end
+			
 
 			context "with 4 exact match" do
 				it "sends a mark with '++++'" do
@@ -111,21 +78,11 @@ module Codebreaker
 					game.guess('1234')
 				end
 			end
-			context "with 3 exact match, 1 number match" do
-				# Impossible
-			end
 			context "with 2 exact match, 2 number match" do
 				it "sends a mark with '++--'" do
 					game.start('1234')
 					expect(output).to receive(:puts).with('++--')
 					game.guess('1243')
-				end
-			end
-			context "with 1 exact match, 3 number match" do
-				it "sends a mark with '+---'" do
-					game.start('1234')
-					expect(output).to receive(:puts).with('+---')
-					game.guess('1342')
 				end
 			end
 			context "with 4 number match" do
